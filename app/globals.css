@@ -3462,47 +3462,33 @@ h6 {
   outline-offset: 3px;
 }
 
-/* Mobile */
+/* Mobile: show the complete hero image in 16:9 ratio */
 @media (max-width: 760px) {
   .editorial-carousel-viewport {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9 !important;
+    height: auto;
+    min-height: 0;
+  }
+
+  .editorial-carousel-slide {
+    height: 100%;
+  }
+
+  .editorial-carousel-slide .editorial-lead-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .editorial-carousel-slide .editorial-lead-image img {
+    object-fit: contain !important;
+    object-position: center;
   }
 
   .editorial-carousel-slide .editorial-image-badge {
     left: 10px;
-    bottom: 12px;
-    padding: 7px 10px;
-    font-size: 12px;
-  }
-
-  .editorial-carousel-visual .editorial-carousel-dots {
-    bottom: 13px;
-    gap: 6px;
-    padding: 7px 10px;
-  }
-
-  .editorial-carousel-visual .editorial-carousel-dots button {
-    width: 7px;
-    height: 7px;
-  }
-
-  .editorial-carousel-visual
-    .editorial-carousel-dots
-    button.is-active {
-    width: 19px;
-  }
-
-  .editorial-carousel-footer {
-    gap: 10px;
-  }
-
-  .editorial-carousel-controls {
-    gap: 6px;
-  }
-
-  .editorial-carousel-controls button {
-    width: 32px;
-    height: 32px;
+    bottom: 10px;
   }
 }
 
@@ -4970,4 +4956,263 @@ h6 {
 .editorial-category-card--magazine .category-svg-icon {
   width: 34px;
   height: 34px;
+}
+
+/* ==========================================
+   SURYA BULLETIN — RESPONSIVE HEADER FIX
+   Desktop styles remain unchanged.
+========================================== */
+
+/* Prevent accidental horizontal overflow. */
+.editorial-header,
+.editorial-masthead,
+.editorial-navigation {
+  min-width: 0;
+}
+
+/* Tablet: keep the brand within the available width. */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .editorial-masthead-inner {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .editorial-brand {
+    max-width: 100%;
+    gap: clamp(4px, 1vw, 12px);
+  }
+
+  .editorial-brand-word {
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: -1px;
+  }
+
+  .editorial-logo {
+    width: clamp(58px, 9vw, 88px);
+    height: clamp(58px, 9vw, 88px);
+  }
+
+  .editorial-app-button img {
+    max-width: 120px;
+    height: auto;
+  }
+}
+
+/* Mobile: fit the complete brand lockup on screen. */
+@media (max-width: 600px) {
+  .editorial-masthead {
+    box-sizing: border-box;
+    padding: 12px 8px 10px;
+
+    /*
+     * Show the complete background artwork.
+     * Avoid cropping its right side on narrow screens.
+     */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .editorial-masthead-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .masthead-spacer {
+    display: none;
+  }
+
+  .editorial-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2px, 1vw, 6px);
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-inline: auto;
+  }
+
+  .editorial-brand-word {
+    min-width: 0;
+    font-size: clamp(17px, 5.8vw, 34px);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .editorial-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: clamp(44px, 13vw, 76px) !important;
+    height: clamp(44px, 13vw, 76px) !important;
+    max-width: none;
+    object-fit: contain;
+  }
+
+  .editorial-app-area {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .editorial-app-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .editorial-app-button img {
+    width: clamp(100px, 30vw, 135px) !important;
+    max-width: 100%;
+    height: auto !important;
+    object-fit: contain;
+  }
+
+  .editorial-tagline-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    max-width: 100%;
+    margin-top: 8px;
+  }
+
+  .editorial-tagline {
+    max-width: 100%;
+    font-size: clamp(11px, 3.2vw, 14px);
+    line-height: 1.5;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  /* Keep navigation labels directly below their icons. */
+  .editorial-category-nav {
+    grid-template-columns: repeat(11, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+    padding: 12px 8px;
+  }
+
+  .editorial-category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 0;
+    min-height: 0;
+    padding: 8px 2px;
+    text-align: center;
+  }
+
+  .editorial-category-icon {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    margin: 0 auto;
+  }
+
+  .editorial-category-label {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    font-size: clamp(9px, 2.6vw, 12px);
+    line-height: 1.35;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .editorial-category-card--epaper .editorial-category-icon,
+  .editorial-category-card--magazine .editorial-category-icon {
+    margin-inline: auto;
+  }
+
+  .breaking-news-inner {
+    min-width: 0;
+  }
+
+  .breaking-news-ticker {
+    min-width: 0;
+  }
+}
+
+/* Extra-small phones. */
+@media (max-width: 380px) {
+  .editorial-masthead {
+    padding-inline: 5px;
+  }
+
+  .editorial-brand {
+    gap: 2px;
+  }
+
+  .editorial-brand-word {
+    font-size: clamp(16px, 5.5vw, 21px);
+    letter-spacing: -0.7px;
+  }
+
+  .editorial-logo {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .editorial-category-nav {
+    gap: 4px;
+    padding-inline: 5px;
+  }
+
+  .editorial-category-card {
+    padding-inline: 1px;
+  }
+
+  .editorial-category-label {
+    font-size: 9px;
+  }
+}
+/* =========================================
+   SURYA BULLETIN - MOBILE HERO IMAGE FIX
+   Desktop layout remains unchanged
+========================================= */
+
+@media (max-width: 600px) {
+  /* Hero carousel image container */
+  .hero-carousel img,
+  .hero-slider img,
+  .featured-news img {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+/* Desktop: keep the original Play Store button position */
+.editorial-app-area--mobile {
+  display: none;
+}
+
+/* Mobile: tagline above Play Store badge */
+@media screen and (max-width: 600px) {
+  .editorial-app-area--desktop {
+    display: none !important;
+  }
+
+  .editorial-app-area--mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+  }
+
+  .editorial-tagline-row {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
 }

@@ -408,27 +408,40 @@ export default function NewsDetailPage() {
               </p>
             )}
 
-            {/* Main hero image: CSS mein iska maximum height control hota hai. */}
-            {article.imageUrl && (
-              <figure className="article-hero">
-                <div className="article-hero-image">
-                  <Image
-                    src={article.imageUrl}
-                    alt={article.title || "Surya Bulletin news"}
-                    fill
-                    unoptimized
-                    priority
-                    sizes="(max-width: 700px) 100vw, 1000px"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
+            ```tsx
+{/* Main hero image: full image visible in 16:9 ratio */}
+{article.imageUrl && (
+  <figure className="article-hero">
+    <div
+      className="article-hero-image"
+      style={{
+        position: "relative",
+        width: "100%",
+        aspectRatio: "16 / 9",
+        overflow: "hidden",
+        backgroundColor: "#f3f3f3",
+      }}
+    >
+      <Image
+        src={article.imageUrl}
+        alt={article.title || "Surya Bulletin news"}
+        fill
+        unoptimized
+        priority
+        sizes="(max-width: 700px) 100vw, 1000px"
+        style={{
+          objectFit: "contain",
+          objectPosition: "center",
+        }}
+      />
+    </div>
 
-                <figcaption>
-                  <span className="article-caption-mark" />
-                  Surya Bulletin | ताज़ा खबरें
-                </figcaption>
-              </figure>
-            )}
+    <figcaption>
+      <span className="article-caption-mark" />
+      Surya Bulletin | ताज़ा खबरें
+    </figcaption>
+  </figure>
+)}
 
             {/* Full article description. Har paragraph alag render hota hai. */}
             <div className="article-body-layout">

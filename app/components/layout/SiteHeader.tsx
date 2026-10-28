@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -64,14 +65,15 @@ export default function SiteHeader() {
               width={160}
               height={150}
               priority
+              sizes="(max-width: 480px) 76px, (max-width: 768px) 100px, 160px"
               className="editorial-logo"
             />
 
             <span className="editorial-brand-word">BULLETIN</span>
           </Link>
 
-          {/* GOOGLE PLAY STORE IMAGE BUTTON */}
-          <div className="editorial-app-area">
+          {/* DESKTOP GOOGLE PLAY BUTTON */}
+          <div className="editorial-app-area editorial-app-area--desktop">
             <Link
               className="editorial-app-button"
               href={SITE_CONFIG.appUrl}
@@ -86,9 +88,10 @@ export default function SiteHeader() {
                 width={150}
                 height={45}
                 priority
-                sizes="150px"
+                sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, 150px"
                 style={{
-                  width: "150px",
+                  width: "100%",
+                  maxWidth: "150px",
                   height: "auto",
                   display: "block",
                   objectFit: "contain",
@@ -98,13 +101,41 @@ export default function SiteHeader() {
           </div>
         </div>
 
-        {/* BRAND TAGLINE */}
+        {/* TAGLINE: Immediately below the brand */}
         <div className="editorial-tagline-row">
           <span className="tagline-decoration" aria-hidden="true" />
 
           <p className="editorial-tagline">{SITE_CONFIG.tagline}</p>
 
           <span className="tagline-decoration" aria-hidden="true" />
+        </div>
+
+        {/* MOBILE GOOGLE PLAY BUTTON: Below the tagline */}
+        <div className="editorial-app-area editorial-app-area--mobile">
+          <Link
+            className="editorial-app-button"
+            href={SITE_CONFIG.appUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Surya Bulletin ऐप डाउनलोड करें"
+            title="ऐप डाउनलोड करें"
+          >
+            <Image
+              src="/images/playstoreicon.webp"
+              alt="Get it on Google Play"
+              width={150}
+              height={45}
+              priority
+              sizes="(max-width: 480px) 100px, (max-width: 768px) 120px, 150px"
+              style={{
+                width: "100%",
+                maxWidth: "150px",
+                height: "auto",
+                display: "block",
+                objectFit: "contain",
+              }}
+            />
+          </Link>
         </div>
       </div>
 
@@ -117,32 +148,35 @@ export default function SiteHeader() {
           {NAV_LINKS.map((item) => {
             const isActive =
               pathname === item.href ||
-              (item.href !== "/" &&
-                pathname.startsWith(`${item.href}/`));
+              (item.href !== "/" && pathname.startsWith(`${item.href}/`));
+
+            const isPublication =
+              item.icon === "epaper" || item.icon === "magazine";
 
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`editorial-category-card editorial-category-card--${item.icon} ${
-  isActive ? "is-active" : ""
-}`}
+                className={`editorial-category-card editorial-category-card--${item.icon}${
+                  isActive ? " is-active" : ""
+                }`}
                 aria-current={isActive ? "page" : undefined}
               >
-               <span
-  className={`editorial-category-icon ${
-    item.icon === "epaper"
-      ? "editorial-category-icon--epaper"
-      : item.icon === "magazine"
-        ? "editorial-category-icon--magazine"
-        : ""
-  }`}
->
-  <CategoryIcon
-    name={item.icon}
-    size={item.icon === "epaper" || item.icon === "magazine" ? 34 : 30}
-  />
-</span>
+                <span
+                  className={`editorial-category-icon${
+                    item.icon === "epaper"
+                      ? " editorial-category-icon--epaper"
+                      : item.icon === "magazine"
+                        ? " editorial-category-icon--magazine"
+                        : ""
+                  }`}
+                  aria-hidden="true"
+                >
+                  <CategoryIcon
+                    name={item.icon}
+                    size={isPublication ? 30 : 30}
+                  />
+                </span>
 
                 <span className="editorial-category-label">
                   {item.label}
@@ -160,17 +194,10 @@ export default function SiteHeader() {
             ↯
           </span>
 
-          <span className="breaking-news-label">
-            ब्रेकिंग न्यूज़
-          </span>
+          <span className="breaking-news-label">ब्रेकिंग न्यूज़</span>
 
-          {/* FIXED DIVIDER */}
-          <span
-            className="breaking-news-divider"
-            aria-hidden="true"
-          />
+          <span className="breaking-news-divider" aria-hidden="true" />
 
-          {/* ANIMATED NEWS TEXT */}
           <div
             className="breaking-news-ticker"
             role="region"
@@ -181,10 +208,7 @@ export default function SiteHeader() {
                 {BREAKING_NEWS}
               </span>
 
-              <span
-                className="breaking-news-message"
-                aria-hidden="true"
-              >
+              <span className="breaking-news-message" aria-hidden="true">
                 {BREAKING_NEWS}
               </span>
             </div>
