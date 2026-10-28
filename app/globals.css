@@ -3719,20 +3719,18 @@ h6 {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 9px 14px;
-  border: 1px solid rgb(255 255 255 / 20%);
-  border-radius: 30px;
-  background: rgb(40 33 29 / 70%);
-  backdrop-filter: blur(8px);
+  padding: 9px 10px;
+  border: 1px solid rgb(255 255 255 / 10%);
+  
 }
 
 .news-home .editorial-carousel-dots button {
-  width: 10px;
-  height: 10px;
-  min-width: 10px;
+  width: 05px;
+  height: 05px;
+  min-width: 05px;
   padding: 0;
   border: 0;
-  border-radius: 50%;
+  
   background: #e9ded5;
   cursor: pointer;
   transition: background-color 180ms ease, transform 180ms ease;
@@ -4852,4 +4850,124 @@ h6 {
   .about-link .playstore-download-icon {
     width: 145px;
   }
+}
+/* =========================================
+   SURYA BULLETIN — FINAL HOMEPAGE ALIGNMENT
+   ========================================= */
+
+/* Keep carousel dots inside the hero image area */
+.news-home .editorial-carousel-visual {
+  position: relative;
+}
+
+/* Move dots closer to the bottom and reduce container size */
+.news-home .editorial-carousel-dots {
+  position: absolute !important;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  padding: 5px 7px;
+  margin: 0;
+
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 20px;
+  background: rgb(35 29 26 / 72%);
+  backdrop-filter: blur(5px);
+}
+
+/* Make inactive dots smaller */
+.news-home .editorial-carousel-dots button {
+  display: block;
+  flex: 0 0 5px;
+
+  width: 5px;
+  min-width: 5px;
+  height: 5px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  border-radius: 50%;
+  background: #e9ded5;
+}
+
+/* Keep the active indicator compact */
+.news-home .editorial-carousel-dots button.is-active {
+  flex-basis: 12px;
+  width: 12px;
+  min-width: 12px;
+  height: 5px;
+
+  border-radius: 10px;
+  background: #e5222b;
+}
+
+/* Vertically center sidebar images against their news text */
+.news-home .editorial-side-story {
+  align-items: center;
+}
+
+.news-home .editorial-side-image {
+  align-self: center;
+  width: 100%;
+  margin: 0;
+}
+
+.news-home .editorial-side-image img {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Keep sidebar text layout unchanged */
+.news-home .editorial-side-copy {
+  min-width: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 760px) {
+  .news-home .editorial-carousel-dots {
+    bottom: 6px;
+    gap: 4px;
+    padding: 4px 6px;
+  }
+
+  .news-home .editorial-carousel-dots button {
+    flex-basis: 4px;
+    width: 4px;
+    min-width: 4px;
+    height: 4px;
+  }
+
+  .news-home .editorial-carousel-dots button.is-active {
+    flex-basis: 10px;
+    width: 10px;
+    min-width: 10px;
+    height: 4px;
+  }
+}
+/* E-paper: light blue */
+.editorial-category-card--epaper .editorial-category-icon {
+  background: #e1f1fc;
+  color: #176b99;
+}
+
+/* Magazine: light purple */
+.editorial-category-card--magazine .editorial-category-icon {
+  background: #ece4ff;
+  color: #7042bd;
+}
+
+/* Slightly larger icons for E-paper and Magazine */
+.editorial-category-card--epaper .category-svg-icon,
+.editorial-category-card--magazine .category-svg-icon {
+  width: 34px;
+  height: 34px;
 }

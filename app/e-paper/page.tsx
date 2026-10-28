@@ -137,8 +137,17 @@ export default function EpaperPage() {
           <span className={styles.eyebrow}>
             SURYA BULLETIN · DIGITAL EDITION
           </span>
-
-          <h1>ई-पेपर</h1>
+<div className={styles.heroTitle}>
+  <Image
+    src="/images/logo.png"
+    alt="Surya Bulletin logo"
+    width={76}
+    height={76}
+    priority
+    className={styles.heroLogo}
+  />
+  <h1>ई-पेपर</h1>
+</div>
 
           <p>
             अखबार का वही भरोसा, अब आपकी स्क्रीन पर।

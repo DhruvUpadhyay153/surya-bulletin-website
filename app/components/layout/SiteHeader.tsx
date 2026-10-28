@@ -14,6 +14,8 @@ const NAV_LINKS: {
   icon: CategoryIconName;
 }[] = [
   { label: "होम", href: "/", icon: "home" },
+  { label: "ई-पेपर", href: "/e-paper", icon: "epaper" },
+  { label: "मैगज़ीन", href: "/magazines", icon: "magazine" },
   { label: "ताज़ा खबरें", href: "/latest-news", icon: "latest" },
   { label: "देश-दुनिया", href: "/category/desh-duniya", icon: "world" },
   { label: "राजनीति", href: "/category/rajniti", icon: "politics" },
@@ -34,8 +36,6 @@ const NAV_LINKS: {
     icon: "entertainment",
   },
   { label: "धर्म", href: "/category/dharma", icon: "dharma" },
-  { label: "ई-पेपर", href: "/e-paper", icon: "epaper" },
-  { label: "मैगज़ीन", href: "/magazines", icon: "magazine" },
 ];
 
 const BREAKING_NEWS =
@@ -124,14 +124,25 @@ export default function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`editorial-category-card ${
-                  isActive ? "is-active" : ""
-                }`}
+                className={`editorial-category-card editorial-category-card--${item.icon} ${
+  isActive ? "is-active" : ""
+}`}
                 aria-current={isActive ? "page" : undefined}
               >
-                <span className="editorial-category-icon">
-                  <CategoryIcon name={item.icon} size={30} />
-                </span>
+               <span
+  className={`editorial-category-icon ${
+    item.icon === "epaper"
+      ? "editorial-category-icon--epaper"
+      : item.icon === "magazine"
+        ? "editorial-category-icon--magazine"
+        : ""
+  }`}
+>
+  <CategoryIcon
+    name={item.icon}
+    size={item.icon === "epaper" || item.icon === "magazine" ? 34 : 30}
+  />
+</span>
 
                 <span className="editorial-category-label">
                   {item.label}

@@ -135,7 +135,17 @@ export default function MagazinesPage() {
             SURYA BULLETIN · DIGITAL MAGAZINE
           </span>
 
-          <h1>मैगज़ीन</h1>
+         <div className={styles.heroTitle}>
+  <Image
+    src="/images/logo.png"
+    alt="Surya Bulletin logo"
+    width={76}
+    height={76}
+    priority
+    className={styles.heroLogo}
+  />
+  <h1>मैगज़ीन</h1>
+</div>
 
           <p>
             विचार, खबरें और खास कहानियाँ — अब डिजिटल मैगज़ीन के रूप में।
