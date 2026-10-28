@@ -1,0 +1,497 @@
+.page {
+  min-height: 70vh;
+  padding: 48px 20px 90px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* Header */
+
+.hero {
+  max-width: 760px;
+  margin: 0 auto 58px;
+  padding: 42px 20px 36px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 17px;
+  color: var(--red);
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.hero h1 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.titleAccent {
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 22px auto;
+  border-radius: 3px;
+  background: var(--red);
+}
+
+.intro {
+  max-width: 590px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+/* Contact layout */
+
+.contactLayout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+/* Left panel */
+
+.messagePanel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 400px;
+  padding: 48px 42px;
+  overflow: hidden;
+  background: var(--cream);
+  border-right: 1px solid var(--line);
+}
+
+.messagePanel::after {
+  position: absolute;
+  right: -75px;
+  bottom: -95px;
+  width: 230px;
+  height: 230px;
+  border: 1px solid rgb(198 149 73 / 25%);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.messagePanel::before {
+  position: absolute;
+  right: -40px;
+  bottom: -60px;
+  width: 160px;
+  height: 160px;
+  border: 1px solid rgb(198 149 73 / 25%);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.panelEyebrow {
+  margin-bottom: 19px;
+  color: var(--red);
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.messagePanel h2 {
+  max-width: 350px;
+  margin: 0 0 19px;
+  color: var(--ink);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.messagePanel > p:not(.brandName) {
+  max-width: 360px;
+  margin: 0;
+  color: var(--muted);
+  font-family: "Hind", sans-serif;
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+.decorativeLine {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 30px;
+}
+
+.decorativeLine span:first-child {
+  width: 38px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--red);
+}
+
+.decorativeLine span:nth-child(2) {
+  width: 16px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--gold);
+}
+
+.decorativeLine span:nth-child(3) {
+  width: 7px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--line);
+}
+
+.brandName {
+  position: relative;
+  z-index: 1;
+  margin: 26px 0 0;
+  color: var(--red);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* Right panel */
+
+.detailsPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 44px 42px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.iconBox {
+  display: flex;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--cream);
+  color: var(--red);
+}
+
+.iconBox svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contactText {
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.contactText > a:not(.mapLink) {
+  color: var(--red);
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transition: color 180ms ease;
+}
+
+.contactText > a:not(.mapLink):hover {
+  color: var(--red-dark);
+  text-decoration: underline;
+}
+
+.contactText p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-family: "Hind", sans-serif;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.contactText address {
+  color: var(--ink);
+  font-family: "Hind", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  line-height: 1.9;
+}
+
+.contactDivider {
+  height: 1px;
+  margin: 29px 0;
+  background: var(--line);
+}
+
+.mapLink {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--red);
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transition: color 180ms ease;
+}
+
+.mapLink:hover {
+  color: var(--red-dark);
+  text-decoration: underline;
+}
+
+/* Bottom note */
+
+.bottomNote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin-top: 35px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--cream);
+  text-align: center;
+}
+
+.noteIcon {
+  color: var(--gold);
+  font-size: 18px;
+}
+
+.bottomNote p {
+  margin: 0;
+  color: var(--muted);
+  font-family: "Hind", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.bottomNote strong {
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* Tablet */
+
+@media (max-width: 850px) {
+  .page {
+    padding: 32px 22px 65px;
+  }
+
+  .hero {
+    margin-bottom: 40px;
+    padding-top: 30px;
+  }
+
+  .contactLayout {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+
+  .messagePanel {
+    padding: 36px 28px;
+  }
+
+  .messagePanel h2 {
+    font-size: 30px;
+  }
+
+  .detailsPanel {
+    padding: 36px 27px;
+  }
+
+  .contactItem {
+    gap: 15px;
+  }
+
+  .iconBox {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  .iconBox svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  .page {
+    padding: 20px 16px 50px;
+  }
+
+  .hero {
+    margin-bottom: 30px;
+    padding: 30px 3px 27px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .hero h1 {
+    font-size: clamp(35px, 9vw, 44px);
+  }
+
+  .titleAccent {
+    margin: 18px auto;
+  }
+
+  .intro {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .contactLayout {
+    grid-template-columns: minmax(0, 1fr);
+    border-radius: 6px;
+  }
+
+  .messagePanel {
+    min-height: auto;
+    padding: 33px 25px;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .messagePanel h2 {
+    max-width: 320px;
+    font-size: 31px;
+  }
+
+  .messagePanel > p:not(.brandName) {
+    font-size: 14px;
+  }
+
+  .decorativeLine {
+    margin-top: 23px;
+  }
+
+  .brandName {
+    margin-top: 19px;
+    font-size: 16px;
+  }
+
+  .detailsPanel {
+    padding: 30px 24px;
+  }
+
+  .contactItem {
+    gap: 14px;
+  }
+
+  .iconBox {
+    width: 43px;
+    height: 43px;
+    flex-basis: 43px;
+  }
+
+  .contactText > a:not(.mapLink) {
+    font-size: 13px;
+  }
+
+  .contactText address {
+    font-size: 14px;
+  }
+
+  .contactDivider {
+    margin: 24px 0;
+  }
+
+  .bottomNote {
+    gap: 8px;
+    margin-top: 24px;
+    padding: 16px 12px;
+  }
+
+  .bottomNote p {
+    font-size: 13px;
+  }
+}
+
+/* Small mobile */
+
+@media (max-width: 360px) {
+  .page {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .messagePanel {
+    padding: 28px 19px;
+  }
+
+  .detailsPanel {
+    padding: 25px 17px;
+  }
+
+  .contactItem {
+    gap: 11px;
+  }
+
+  .iconBox {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .contactText > a:not(.mapLink) {
+    font-size: 12px;
+  }
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .contactText > a:not(.mapLink),
+  .mapLink {
+    transition: none;
+  }
+}

@@ -1,0 +1,1137 @@
+/*
+ * Surya Bulletin — Premium News Article
+ *
+ * Purpose:
+ * 1. Individual news page ko premium editorial look dena.
+ * 2. Headline, category, date, image aur article body style karna.
+ * 3. Share buttons, loading state aur error state style karna.
+ * 4. Mobile, tablet aur desktop layouts support karna.
+ *
+ * Note:
+ * Ye file sirf individual news page ke liye hai.
+ * Home page ki existing CSS globals.css mein hi rahegi.
+ */
+
+/* =========================================
+   1. ARTICLE PAGE DEFAULTS
+   ========================================= */
+
+.article-page {
+  --article-red: #9e2a2b;
+  --article-red-dark: #721c21;
+  --article-paper: #fffdf9;
+  --article-ink: #211c19;
+  --article-muted: #6f6259;
+  --article-line: #e9d8c5;
+  --article-cream: #f8f2e9;
+
+  min-height: 100vh;
+  background: var(--article-paper);
+  color: var(--article-ink);
+}
+
+/* =========================================
+   2. HEADER AND BRANDING
+   ========================================= */
+
+.article-header {
+  position: relative;
+  z-index: 10;
+  background: var(--article-paper);
+  border-bottom: 1px solid var(--article-line);
+}
+
+.article-header-inner {
+  width: min(1200px, calc(100% - 48px));
+  min-height: 82px;
+  margin-inline: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.article-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.article-brand-mark,
+.article-publication-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid #d9bb88;
+  border-radius: 50%;
+
+  background: var(--article-cream);
+  color: var(--article-red);
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.article-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.article-brand-text strong {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 17px;
+  letter-spacing: 0.7px;
+  line-height: 1.4;
+}
+
+.article-brand-text small {
+  color: var(--article-muted);
+  font-size: 12px;
+}
+
+.article-home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 10px 15px;
+
+  border: 1px solid var(--article-line);
+  border-radius: 4px;
+
+  color: var(--article-ink);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.article-home-link:hover {
+  background: var(--article-red);
+  border-color: var(--article-red);
+  color: #fff;
+}
+
+/* =========================================
+   3. ARTICLE CONTAINER AND ANIMATION
+   ========================================= */
+
+.article-container {
+  width: min(1100px, calc(100% - 48px));
+  margin-inline: auto;
+  padding: 32px 0 76px;
+}
+
+.premium-article {
+  animation: article-appear 400ms ease both;
+}
+
+@keyframes article-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   4. BREADCRUMB NAVIGATION
+   ========================================= */
+
+.article-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 32px;
+
+  color: #9a9188;
+  font-size: 12px;
+}
+
+.article-breadcrumb a {
+  color: var(--article-muted);
+  text-decoration: none;
+}
+
+.article-breadcrumb a:hover,
+.breadcrumb-current {
+  color: var(--article-red);
+}
+
+.breadcrumb-current {
+  font-weight: 600;
+}
+
+/* =========================================
+   5. NEWS CATEGORY
+   ========================================= */
+
+.article-category-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 17px;
+}
+
+.article-category-badge {
+  display: inline-block;
+  max-width: 100%;
+  padding: 7px 12px;
+
+  background: var(--article-red);
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.article-category-line {
+  width: 52px;
+  height: 1px;
+  flex-shrink: 0;
+
+  background: #d6b4a0;
+}
+
+/* =========================================
+   6. HEADLINE AND INTRODUCTION
+   ========================================= */
+
+.article-title {
+  max-width: 1000px;
+  margin: 0 0 18px;
+
+  color: var(--article-ink);
+
+  font-family:
+    "Noto Serif Devanagari",
+    "Hind",
+    Georgia,
+    serif;
+
+  font-size: clamp(32px, 4.3vw, 52px);
+  font-weight: 800;
+  line-height: 1.48;
+  letter-spacing: -0.4px;
+
+  overflow-wrap: anywhere;
+}
+
+.article-deck {
+  max-width: 850px;
+  margin: 0 0 24px;
+
+  color: var(--article-muted);
+
+  font-family: "Hind", sans-serif;
+  font-size: 18px;
+  line-height: 1.9;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   7. PUBLICATION DETAILS AND SHARE BUTTON
+   ========================================= */
+
+.article-byline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 17px;
+
+  padding: 17px 0;
+  margin-bottom: 26px;
+
+  border-top: 1px solid var(--article-line);
+  border-bottom: 1px solid var(--article-line);
+}
+
+.article-publication {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.article-publication-icon {
+  width: 37px;
+  height: 37px;
+  font-size: 20px;
+}
+
+.article-publication > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.article-publication strong {
+  font-size: 12px;
+}
+
+.article-publication small {
+  color: var(--article-muted);
+  font-size: 11px;
+}
+
+.article-date {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  color: var(--article-muted);
+  font-size: 12px;
+}
+
+.article-meta-dot {
+  color: var(--article-red);
+}
+
+.article-share-button,
+.article-share-bottom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 13px;
+  margin-left: auto;
+
+  border: 1px solid var(--article-line);
+  border-radius: 4px;
+
+  background: transparent;
+  color: var(--article-ink);
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.article-share-button:hover,
+.article-share-bottom:hover {
+  background: var(--article-red);
+  border-color: var(--article-red);
+  color: #fff;
+}
+
+.article-share-message {
+  margin: -12px 0 18px;
+  color: var(--article-red);
+  font-size: 13px;
+}
+
+/* =========================================
+   8. HERO IMAGE
+   ========================================= */
+
+.article-hero {
+  margin: 0 0 42px;
+}
+
+.article-hero-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+  border-radius: 5px;
+
+  background: var(--article-cream);
+  box-shadow: 0 14px 36px rgb(47 28 17 / 9%);
+}
+
+.article-hero-image img {
+  transition: transform 400ms ease;
+}
+
+.article-hero:hover .article-hero-image img {
+  transform: scale(1.015);
+}
+
+.article-hero figcaption {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-top: 11px;
+
+  color: #8a8178;
+  font-size: 11px;
+}
+
+.article-caption-mark {
+  width: 18px;
+  height: 2px;
+  background: var(--article-red);
+}
+
+/* =========================================
+   9. FULL ARTICLE BODY
+   ========================================= */
+
+.article-body-layout {
+  display: grid;
+  grid-template-columns: 115px minmax(0, 760px);
+  justify-content: center;
+  gap: 35px;
+}
+
+.article-side-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding-top: 12px;
+
+  color: var(--article-red);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.article-side-line {
+  width: 40px;
+  height: 2px;
+  background: var(--article-red);
+}
+
+.article-body {
+  min-width: 0;
+
+  color: #39312b;
+
+  font-family:
+    "Noto Serif Devanagari",
+    "Hind",
+    Georgia,
+    serif;
+
+  font-size: 18px;
+  line-height: 2.05;
+
+  overflow-wrap: anywhere;
+}
+
+.article-body > p {
+  margin: 0 0 24px;
+  white-space: pre-wrap;
+}
+
+/* =========================================
+   10. ARTICLE END SIGNATURE
+   ========================================= */
+
+.article-end-note {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+
+  margin-top: 45px;
+  padding: 25px 0;
+
+  border-top: 1px solid var(--article-line);
+
+  color: var(--article-muted);
+  font-size: 12px;
+}
+
+.article-end-rule {
+  width: 38px;
+  height: 3px;
+  margin-bottom: 6px;
+
+  background: var(--article-red);
+}
+
+.article-end-note strong {
+  color: var(--article-ink);
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 17px;
+  letter-spacing: 0.7px;
+}
+
+.article-end-tagline {
+  font-size: 12px;
+}
+
+/* =========================================
+   11. BOTTOM ACTION BUTTONS
+   ========================================= */
+
+.article-bottom-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  padding-top: 22px;
+  border-top: 1px solid var(--article-line);
+}
+
+.article-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 12px 16px;
+
+  border: 1px solid var(--article-red);
+  border-radius: 4px;
+
+  background: var(--article-red);
+  color: #fff;
+
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: background 180ms ease;
+}
+
+.article-back-button:hover {
+  background: var(--article-red-dark);
+}
+
+.article-bottom-actions .article-share-bottom {
+  margin-left: 0;
+}
+
+/* =========================================
+   12. LOADING AND ERROR STATES
+   ========================================= */
+
+.article-status {
+  min-height: 330px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  color: var(--article-muted);
+  text-align: center;
+}
+
+.article-status h1 {
+  margin: 0;
+  color: var(--article-ink);
+  font-size: 25px;
+}
+
+.article-status p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.article-loader {
+  width: 34px;
+  height: 34px;
+
+  border: 3px solid var(--article-line);
+  border-top-color: var(--article-red);
+  border-radius: 50%;
+
+  animation: article-spin 800ms linear infinite;
+}
+
+@keyframes article-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.article-error-mark {
+  display: grid;
+  place-items: center;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+  background: #f8e9e8;
+  color: var(--article-red);
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* =========================================
+   13. FOOTER
+   ========================================= */
+
+.article-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+
+  padding: 26px 24px;
+
+  border-top: 1px solid var(--article-line);
+
+  color: var(--article-muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+.article-footer a {
+  color: var(--article-red);
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+}
+
+/* =========================================
+   14. TABLET AND MOBILE RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 700px) {
+  .article-header-inner {
+    width: calc(100% - 32px);
+    min-height: 72px;
+    gap: 10px;
+  }
+
+  .article-brand {
+    gap: 9px;
+  }
+
+  .article-brand-mark {
+    width: 37px;
+    height: 37px;
+    font-size: 20px;
+  }
+
+  .article-brand-text strong {
+    font-size: 13px;
+    letter-spacing: 0.2px;
+  }
+
+  .article-brand-text small {
+    font-size: 10px;
+  }
+
+  .article-home-link {
+    gap: 6px;
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  .article-container {
+    width: calc(100% - 32px);
+    padding-top: 23px;
+    padding-bottom: 48px;
+  }
+
+  .article-breadcrumb {
+    gap: 7px;
+    margin-bottom: 25px;
+    font-size: 10px;
+  }
+
+  .article-category-row {
+    margin-bottom: 13px;
+  }
+
+  .article-category-badge {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .article-title {
+    margin-bottom: 14px;
+    font-size: clamp(27px, 7vw, 38px);
+    line-height: 1.55;
+    letter-spacing: 0;
+  }
+
+  .article-deck {
+    margin-bottom: 19px;
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  .article-byline {
+    gap: 13px;
+    padding: 14px 0;
+    margin-bottom: 22px;
+  }
+
+  .article-publication {
+    width: 100%;
+  }
+
+  .article-date {
+    flex: 1;
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .article-share-button {
+    gap: 6px;
+    padding: 9px;
+    font-size: 11px;
+  }
+
+  .article-hero {
+    margin-bottom: 30px;
+  }
+
+  .article-hero-image {
+    border-radius: 4px;
+  }
+
+  .article-body-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .article-side-label {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding-top: 0;
+  }
+
+  .article-side-line {
+    width: 30px;
+  }
+
+  .article-body {
+    font-size: 17px;
+    line-height: 2;
+  }
+
+  .article-body > p {
+    margin-bottom: 20px;
+  }
+
+  .article-end-note {
+    margin-top: 32px;
+  }
+
+  .article-bottom-actions {
+    align-items: stretch;
+  }
+
+  .article-bottom-actions .article-back-button,
+  .article-bottom-actions .article-share-bottom {
+    flex: 1;
+    justify-content: center;
+    padding: 11px 9px;
+    font-size: 11px;
+  }
+
+  .article-footer {
+    flex-direction: column;
+    gap: 7px;
+  }
+}
+
+/* Animation ko un users ke liye disable karte hain
+   jinhone reduced motion preference select ki hai. */
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-article,
+  .article-loader {
+    animation: none;
+  }
+
+  .article-hero-image img {
+    transition: none;
+  }
+}
+/* =====================================================
+   15. PREMIUM ARTICLE DESIGN REFINEMENTS
+   Ye styles sirf individual news page ke liye hain.
+   ===================================================== */
+
+/* Headline aur article content ki width aur spacing improve karte hain. */
+.article-container {
+  width: min(1160px, calc(100% - 48px));
+  padding-top: 26px;
+  padding-bottom: 64px;
+}
+
+.article-breadcrumb {
+  margin-bottom: 25px;
+  font-family: "Hind", sans-serif;
+}
+
+/* Category badge ko cleaner editorial style dete hain. */
+.article-category-badge {
+  border-radius: 3px;
+  letter-spacing: 0.15px;
+}
+
+/* Headline: strong newspaper typography, lekin excessive size nahi. */
+.article-title {
+  max-width: 1050px;
+  margin-bottom: 16px;
+  font-family: "Noto Serif Devanagari", "Hind", Georgia, serif;
+  font-size: clamp(30px, 3.4vw, 46px);
+  font-weight: 800;
+  line-height: 1.42;
+  letter-spacing: -0.35px;
+  text-wrap: pretty;
+}
+
+/* Introductory summary ko halka aur readable rakhte hain. */
+.article-deck {
+  max-width: 900px;
+  margin-bottom: 22px;
+  font-family: "Hind", sans-serif;
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.85;
+  color: #62574f;
+}
+
+/* Byline ko compact aur professional banate hain. */
+.article-byline {
+  gap: 20px;
+  padding: 14px 0;
+  margin-bottom: 22px;
+}
+
+.article-publication-icon {
+  border-color: #dfc8a9;
+}
+
+.article-share-button,
+.article-share-bottom,
+.article-home-link {
+  border-radius: 5px;
+}
+
+/* Hero image ko chhota karte hain; width full rahegi. */
+.article-hero {
+  max-width: 1000px;
+  margin: 0 auto 34px;
+}
+
+.article-hero-image {
+  aspect-ratio: 16 / 8.5;
+  max-height: 500px;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgb(47 28 17 / 8%);
+}
+
+/* Image ke neeche caption ko subtle rakhte hain. */
+.article-hero figcaption {
+  margin-top: 10px;
+  font-family: "Hind", sans-serif;
+}
+
+/* Article body ko newspaper-style reading width dete hain. */
+.article-body-layout {
+  grid-template-columns: 100px minmax(0, 760px);
+  gap: 30px;
+}
+
+.article-side-label {
+  padding-top: 8px;
+  font-family: "Hind", sans-serif;
+}
+
+.article-body {
+  color: #342d28;
+  font-family: "Noto Serif Devanagari", "Hind", Georgia, serif;
+  font-size: 18px;
+  line-height: 2;
+  overflow-wrap: break-word;
+}
+
+.article-body > p {
+  margin-bottom: 25px;
+}
+
+/* Article ke end par branding ko refined rakhte hain. */
+.article-end-note {
+  margin-top: 38px;
+  padding: 24px 0;
+}
+
+/* =====================================================
+   16. RELATED NEWS — HORIZONTAL SCROLLING CARDS
+   ===================================================== */
+
+.related-news-section {
+  margin-top: 58px;
+  padding-top: 30px;
+  border-top: 1px solid var(--article-line);
+}
+
+/* Section heading aur navigation buttons. */
+.related-news-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.related-news-heading-text small {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--article-red);
+  font-family: "Hind", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.related-news-heading h2 {
+  margin: 0;
+  color: var(--article-ink);
+  font-family: "Noto Serif Devanagari", "Hind", Georgia, serif;
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.related-news-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.related-news-controls button {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid var(--article-line);
+  border-radius: 50%;
+  background: var(--article-paper);
+  color: var(--article-ink);
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.related-news-controls button:hover {
+  background: var(--article-red);
+  color: #fff;
+}
+
+/* Horizontal slider: cards ek row mein rahenge. */
+.related-news-track {
+  display: grid;
+  grid-auto-columns: minmax(250px, 31%);
+  grid-auto-flow: column;
+  gap: 18px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 2px 2px 14px;
+  scrollbar-width: thin;
+  scrollbar-color: #c8a69a transparent;
+}
+
+.related-news-track::-webkit-scrollbar {
+  height: 5px;
+}
+
+.related-news-track::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: #c8a69a;
+}
+
+/* Har related news ek compact premium card hogi. */
+.related-news-card {
+  min-width: 0;
+  overflow: hidden;
+  scroll-snap-align: start;
+  border: 1px solid var(--article-line);
+  border-radius: 8px;
+  background: #fff;
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.related-news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgb(47 28 17 / 9%);
+}
+
+.related-news-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--article-cream);
+}
+
+.related-news-image img {
+  object-fit: cover;
+  transition: transform 250ms ease;
+}
+
+.related-news-card:hover .related-news-image img {
+  transform: scale(1.035);
+}
+
+.related-news-card-content {
+  padding: 15px 16px 17px;
+}
+
+.related-news-card-category {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--article-red);
+  font-family: "Hind", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.related-news-card h3 {
+  display: -webkit-box;
+  min-height: 3em;
+  margin: 0 0 12px;
+  overflow: hidden;
+  color: var(--article-ink);
+  font-family: "Noto Serif Devanagari", "Hind", Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.related-news-card-date {
+  color: var(--article-muted);
+  font-family: "Hind", sans-serif;
+  font-size: 11px;
+}
+
+.related-news-loading,
+.related-news-empty {
+  padding: 20px 0;
+  color: var(--article-muted);
+  font-size: 14px;
+}
+
+/* Tablet aur mobile par spacing aur cards adjust karte hain. */
+@media (max-width: 700px) {
+  .article-container {
+    width: calc(100% - 32px);
+    padding-top: 20px;
+    padding-bottom: 42px;
+  }
+
+  .article-title {
+    font-size: clamp(26px, 7vw, 36px);
+    line-height: 1.55;
+  }
+
+  .article-deck {
+    font-size: 16px;
+    line-height: 1.85;
+  }
+
+  .article-hero {
+    margin-bottom: 27px;
+  }
+
+  .article-hero-image {
+    aspect-ratio: 16 / 10;
+    max-height: 330px;
+    border-radius: 6px;
+  }
+
+  .article-body-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .article-body {
+    font-size: 17px;
+    line-height: 1.95;
+  }
+
+  .related-news-section {
+    margin-top: 38px;
+    padding-top: 24px;
+  }
+
+  .related-news-heading {
+    align-items: center;
+    margin-bottom: 17px;
+  }
+
+  .related-news-heading h2 {
+    font-size: 22px;
+  }
+
+  .related-news-controls button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .related-news-track {
+    grid-auto-columns: minmax(235px, 78%);
+    gap: 13px;
+  }
+
+  .related-news-card-content {
+    padding: 13px;
+  }
+
+  .related-news-card h3 {
+    font-size: 16px;
+  }
+}
+
+/* Reduced-motion preference ka respect karte hain. */
+@media (prefers-reduced-motion: reduce) {
+  .related-news-track {
+    scroll-behavior: auto;
+  }
+
+  .related-news-card,
+  .related-news-image img {
+    transition: none;
+  }
+}

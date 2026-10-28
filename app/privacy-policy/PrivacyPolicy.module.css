@@ -1,0 +1,528 @@
+.page {
+  min-height: 70vh;
+  padding: 48px 20px 90px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Page heading */
+
+.hero {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto 56px;
+  padding: 46px 24px 40px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--red);
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+}
+
+.hero h1 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: -1.2px;
+}
+
+.titleAccent {
+  display: block;
+  width: 62px;
+  height: 3px;
+  margin: 23px auto 22px;
+  background: var(--red);
+  border-radius: 2px;
+}
+
+.intro {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-family: "Hind", sans-serif;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 24px;
+  padding: 9px 15px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: var(--white);
+  color: var(--muted);
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.updatedDot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* Main layout */
+
+.layout {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  align-items: start;
+  gap: 56px;
+}
+
+/* Left navigation */
+
+.sidebar {
+  position: relative;
+  min-width: 0;
+}
+
+.sidebarInner {
+  position: sticky;
+  top: 28px;
+  padding: 25px 20px 22px;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--red);
+  border-radius: 5px;
+  background: var(--cream);
+}
+
+.sidebarLabel {
+  display: block;
+  margin-bottom: 19px;
+  color: var(--red);
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar nav a {
+  display: block;
+  padding: 8px 10px;
+  border-left: 2px solid transparent;
+  border-radius: 2px;
+  color: var(--muted);
+  font-family: "Hind", sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.sidebar nav a:hover {
+  border-left-color: var(--red);
+  background: rgb(158 42 43 / 6%);
+  color: var(--red);
+}
+
+/* Policy content */
+
+.policy {
+  min-width: 0;
+}
+
+.section {
+  scroll-margin-top: 35px;
+  margin-bottom: 38px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section h2 {
+  position: relative;
+  margin: 0 0 16px;
+  padding-left: 17px;
+  color: var(--ink);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(21px, 2.3vw, 26px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.section h2::before {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 0;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--red);
+  content: "";
+}
+
+.sectionContent p,
+.contactIntro {
+  margin: 0;
+  color: var(--muted);
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.95;
+}
+
+/* Contact card */
+
+.contactSection {
+  margin-bottom: 32px;
+  padding-bottom: 34px;
+  border-bottom: none;
+}
+
+.contactIntro {
+  margin-bottom: 23px;
+}
+
+.contactCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 19px;
+  padding: 25px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--red);
+  border-radius: 5px;
+  background: var(--cream);
+}
+
+.contactIcon {
+  display: flex;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--white);
+  font-family: "DM Sans", sans-serif;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.contactDetails {
+  min-width: 0;
+}
+
+.contactLabel {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--red);
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.contactDetails h3 {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.contactDetails p {
+  margin: 3px 0;
+  color: var(--muted);
+  font-family: "Hind", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.emailLink {
+  display: inline-block;
+  max-width: 100%;
+  margin-top: 15px;
+  color: var(--red);
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transition: color 180ms ease;
+}
+
+.emailLink:hover {
+  color: var(--red-dark);
+  text-decoration: underline;
+}
+
+/* Closing note */
+
+.closing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 24px 0 0;
+  text-align: center;
+}
+
+.closing p {
+  margin: 0;
+  color: var(--muted);
+  font-family: "Hind", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.closing strong {
+  color: var(--red);
+  font-weight: 600;
+}
+
+.closingLine {
+  width: 28px;
+  height: 1px;
+  flex: 0 0 28px;
+  background: var(--gold);
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .page {
+    padding: 32px 22px 70px;
+  }
+
+  .hero {
+    margin-bottom: 38px;
+    padding-top: 35px;
+  }
+
+  .layout {
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .sidebarInner {
+    padding: 20px 14px;
+  }
+
+  .sidebar nav a {
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+
+  .section {
+    margin-bottom: 30px;
+    padding-bottom: 27px;
+  }
+
+  .sectionContent p,
+  .contactIntro {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  .page {
+    padding: 20px 16px 52px;
+  }
+
+  .hero {
+    margin-bottom: 30px;
+    padding: 30px 3px 28px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+    font-size: 10px;
+    letter-spacing: 2.2px;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 9vw, 44px);
+    letter-spacing: -0.7px;
+  }
+
+  .titleAccent {
+    margin: 18px auto;
+  }
+
+  .intro {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .updated {
+    margin-top: 19px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .sidebarInner {
+    position: static;
+    padding: 18px;
+  }
+
+  .sidebarLabel {
+    margin-bottom: 13px;
+  }
+
+  .sidebar nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 10px;
+  }
+
+  .sidebar nav a {
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+
+  .section {
+    scroll-margin-top: 20px;
+    margin-bottom: 27px;
+    padding-bottom: 25px;
+  }
+
+  .section h2 {
+    margin-bottom: 12px;
+    padding-left: 14px;
+    font-size: 22px;
+  }
+
+  .section h2::before {
+    top: 4px;
+    bottom: 4px;
+    width: 3px;
+  }
+
+  .sectionContent p,
+  .contactIntro {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .contactSection {
+    padding-bottom: 22px;
+  }
+
+  .contactCard {
+    gap: 14px;
+    padding: 19px 15px;
+  }
+
+  .contactIcon {
+    width: 39px;
+    height: 39px;
+    flex-basis: 39px;
+    font-size: 20px;
+  }
+
+  .contactLabel {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .contactDetails h3 {
+    font-size: 19px;
+  }
+
+  .contactDetails p,
+  .emailLink {
+    font-size: 13px;
+  }
+
+  .closing {
+    gap: 9px;
+  }
+
+  .closingLine {
+    width: 17px;
+    flex-basis: 17px;
+  }
+
+  .closing p {
+    font-size: 13px;
+  }
+}
+
+/* Small mobile */
+
+@media (max-width: 360px) {
+  .page {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .sidebarInner {
+    padding: 14px 11px;
+  }
+
+  .sidebar nav {
+    gap: 3px 5px;
+  }
+
+  .sidebar nav a {
+    padding: 6px;
+    font-size: 11px;
+  }
+
+  .contactCard {
+    gap: 10px;
+    padding: 15px 11px;
+  }
+
+  .contactIcon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+    font-size: 18px;
+  }
+}
+
+/* Respect reduced motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar nav a,
+  .emailLink {
+    transition: none;
+  }
+}
