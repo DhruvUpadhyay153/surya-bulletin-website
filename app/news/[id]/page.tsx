@@ -368,10 +368,7 @@ export default function NewsDetailPage() {
 
               <div className="article-date">
                 <span>{formatDate(article.createdAt)}</span>
-                <span className="article-meta-dot">•</span>
-                <span>
-                  {getReadingTime(article.description || "")} मिनट पढ़ने का समय
-                </span>
+                
               </div>
 
               <button
@@ -408,7 +405,7 @@ export default function NewsDetailPage() {
               </p>
             )}
 
-            ```tsx
+            
 {/* Main hero image: full image visible in 16:9 ratio */}
 {article.imageUrl && (
   <figure className="article-hero">

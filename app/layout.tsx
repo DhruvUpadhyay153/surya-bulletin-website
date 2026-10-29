@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { Cinzel, Marcellus, Noto_Sans_Devanagari } from "next/font/google";
 
@@ -41,8 +40,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "hi_IN",
     siteName: "Surya Bulletin",
+    url: "https://suryabulletin.in",
     title: "Surya Bulletin | ताज़ा खबरें, खास कहानियाँ",
     description: "ताज़ा खबरें। खास कहानियाँ। आपका भरोसा।",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Surya Bulletin - ताज़ा खबरें, खास कहानियाँ",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Surya Bulletin | ताज़ा खबरें, खास कहानियाँ",
+    description: "ताज़ा खबरें। खास कहानियाँ। आपका भरोसा।",
+    images: ["/opengraph-image.png"],
   },
 
   robots: {
