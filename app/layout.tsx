@@ -37,28 +37,25 @@ export const metadata: Metadata = {
   applicationName: "Surya Bulletin",
 
   openGraph: {
-    type: "website",
-    locale: "hi_IN",
-    siteName: "Surya Bulletin",
-    url: "https://suryabulletin.in",
-    title: "Surya Bulletin | ताज़ा खबरें, खास कहानियाँ",
-    description: "ताज़ा खबरें। खास कहानियाँ। आपका भरोसा।",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Surya Bulletin - ताज़ा खबरें, खास कहानियाँ",
-      },
-    ],
-  },
-
+  type: "website",
+  locale: "hi_IN",
+  siteName: "Surya Bulletin",
+  url: "https://suryabulletin.in",
+  title: "Surya Bulletin | ताज़ा खबरें, खास कहानियाँ",
+  description: "ताज़ा खबरें। खास कहानियाँ। आपका भरोसा।",
+  images: [
+    {
+      url: "/images/logo.png",
+      alt: "Surya Bulletin Logo",
+    },
+  ],
+},
   twitter: {
-    card: "summary_large_image",
-    title: "Surya Bulletin | ताज़ा खबरें, खास कहानियाँ",
-    description: "ताज़ा खबरें। खास कहानियाँ। आपका भरोसा।",
-    images: ["/opengraph-image.png"],
-  },
+  card: "summary",
+  title: "Surya Bulletin | ताज़ा खबरें, खास कहानियाँ",
+  description: "ताज़ा खबरें। खास कहानियाँ। आपका भरोसा।",
+  images: ["/images/logo.png"],
+},
 
   robots: {
     index: true,
