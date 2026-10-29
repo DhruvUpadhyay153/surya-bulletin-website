@@ -66,13 +66,6 @@ function formatDate(value: NewsArticle["createdAt"]): string {
   });
 }
 
-/* Reading time ka approximate estimate calculate karta hai. */
-function getReadingTime(description: string): number {
-  const words = description.trim().split(/\s+/).filter(Boolean).length;
-
-  return Math.max(1, Math.ceil(words / 180));
-}
-
 /* Timestamp ko sorting ke liye milliseconds mein convert karta hai. */
 function getDateValue(value: NewsArticle["createdAt"]): number {
   if (!value) return 0;
