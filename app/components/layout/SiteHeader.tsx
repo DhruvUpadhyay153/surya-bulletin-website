@@ -4,6 +4,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { doc, onSnapshot } from "firebase/firestore";
+
+import { db } from "../../lib/firebase";
 import { SITE_CONFIG } from "../../constants/site";
 import CategoryIcon, {
   type CategoryIconName,
@@ -39,11 +43,58 @@ const NAV_LINKS: {
   { label: "धर्म", href: "/category/dharma", icon: "dharma" },
 ];
 
-const BREAKING_NEWS =
-  "देश और दुनिया की हर बड़ी खबर, सबसे पहले — सिर्फ Surya Bulletin पर";
-
 export default function SiteHeader() {
   const pathname = usePathname();
+
+  const [breakingNewsMessage, setBreakingNewsMessage] = useState("");
+  const [breakingNewsEnabled, setBreakingNewsEnabled] = useState(false);
+
+  useEffect(() => {
+    const breakingNewsRef = doc(db, "website_settings", "breaking_news");
+
+    const unsubscribe = onSnapshot(
+      breakingNewsRef,
+      (snapshot) => {
+        if (!snapshot.exists()) {
+          console.warn("[Breaking News] Document not found.");
+          setBreakingNewsMessage("");
+          setBreakingNewsEnabled(false);
+          return;
+        }
+
+        const data = snapshot.data();
+
+        console.log("[Breaking News] Firestore fields:", Object.keys(data));
+        console.log("[Breaking News] Full data:", data);
+
+        const message =
+          typeof data.message === "string" ? data.message.trim() : "";
+
+        // Read enabled only if the field is present and boolean.
+        const enabled =
+          typeof data.enabled === "boolean"
+            ? data.enabled
+            : false;
+
+        console.log("[Breaking News] Message:", message);
+        console.log("[Breaking News] Enabled:", enabled);
+        console.log(
+          "[Breaking News] Final visibility:",
+          enabled && message.length > 0
+        );
+
+        setBreakingNewsMessage(message);
+        setBreakingNewsEnabled(enabled && message.length > 0);
+      },
+      (error) => {
+        console.error("[Breaking News] Firestore error:", error);
+        setBreakingNewsMessage("");
+        setBreakingNewsEnabled(false);
+      }
+    );
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <header className="site-header editorial-header">
@@ -101,7 +152,7 @@ export default function SiteHeader() {
           </div>
         </div>
 
-        {/* TAGLINE: Immediately below the brand */}
+        {/* TAGLINE */}
         <div className="editorial-tagline-row">
           <span className="tagline-decoration" aria-hidden="true" />
 
@@ -110,7 +161,7 @@ export default function SiteHeader() {
           <span className="tagline-decoration" aria-hidden="true" />
         </div>
 
-        {/* MOBILE GOOGLE PLAY BUTTON: Below the tagline */}
+        {/* MOBILE GOOGLE PLAY BUTTON */}
         <div className="editorial-app-area editorial-app-area--mobile">
           <Link
             className="editorial-app-button"
@@ -150,8 +201,7 @@ export default function SiteHeader() {
               pathname === item.href ||
               (item.href !== "/" && pathname.startsWith(`${item.href}/`));
 
-            const isPublication =
-              item.icon === "epaper" || item.icon === "magazine";
+         
 
             return (
               <Link
@@ -172,10 +222,7 @@ export default function SiteHeader() {
                   }`}
                   aria-hidden="true"
                 >
-                  <CategoryIcon
-                    name={item.icon}
-                    size={isPublication ? 30 : 30}
-                  />
+                  <CategoryIcon name={item.icon} size={30} />
                 </span>
 
                 <span className="editorial-category-label">
@@ -187,34 +234,42 @@ export default function SiteHeader() {
         </nav>
       </div>
 
-      {/* ROW 3: BREAKING NEWS TICKER */}
-      <div className="breaking-news-strip">
-        <div className="breaking-news-inner">
-          <span className="breaking-news-bolt" aria-hidden="true">
-            ↯
-          </span>
+      {/* ROW 3: FIRESTORE BREAKING NEWS TICKER */}
+      {breakingNewsEnabled && (
+        <div className="breaking-news-strip">
+          <div className="breaking-news-inner">
+            <span className="breaking-news-bolt" aria-hidden="true">
+              ↯
+            </span>
 
-          <span className="breaking-news-label">ब्रेकिंग न्यूज़</span>
+            <span className="breaking-news-label">ब्रेकिंग न्यूज़</span>
 
-          <span className="breaking-news-divider" aria-hidden="true" />
+            <span
+              className="breaking-news-divider"
+              aria-hidden="true"
+            />
 
-          <div
-            className="breaking-news-ticker"
-            role="region"
-            aria-label="ब्रेकिंग न्यूज़ अपडेट"
-          >
-            <div className="breaking-news-track">
-              <span className="breaking-news-message">
-                {BREAKING_NEWS}
-              </span>
+            <div
+              className="breaking-news-ticker"
+              role="region"
+              aria-label="ब्रेकिंग न्यूज़ अपडेट"
+            >
+              <div className="breaking-news-track">
+                <span className="breaking-news-message">
+                  {breakingNewsMessage}
+                </span>
 
-              <span className="breaking-news-message" aria-hidden="true">
-                {BREAKING_NEWS}
-              </span>
+                <span
+                  className="breaking-news-message"
+                  aria-hidden="true"
+                >
+                  {breakingNewsMessage}
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }

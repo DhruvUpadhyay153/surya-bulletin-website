@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   description: "ताज़ा खबरें। खास कहानियाँ। आपका भरोसा।",
   images: [
     {
-      url: "/images/logo.png",
+      url: "public/images/logo.png",
       alt: "Surya Bulletin Logo",
     },
   ],
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   card: "summary",
   title: "Surya Bulletin | ताज़ा खबरें, खास कहानियाँ",
   description: "ताज़ा खबरें। खास कहानियाँ। आपका भरोसा।",
-  images: ["/images/logo.png"],
+  images: ["public/images/logo.png"],
 },
 
   robots: {
