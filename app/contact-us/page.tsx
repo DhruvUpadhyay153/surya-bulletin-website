@@ -42,7 +42,7 @@ export default function ContactUsPage() {
               <span />
             </div>
 
-            <p className={styles.brandName}>Tulsi – Puja For Everyone</p>
+            <p className={styles.brandName}>Surya Bulletin</p>
           </div>
 
           <div className={styles.detailsPanel}>
@@ -64,8 +64,8 @@ export default function ContactUsPage() {
               <div className={styles.contactText}>
                 <span className={styles.label}>EMAIL US</span>
 
-                <a href="mailto:tyagianiket704898@gmail.com">
-                  tyagianiket704898@gmail.com
+                <a href="mailto:suryabulletinofficial@gmail.com">
+                  suryabulletinofficial@gmail.com
                 </a>
 
                 <p>For questions, concerns, and requests.</p>
@@ -93,23 +93,14 @@ export default function ContactUsPage() {
                 <span className={styles.label}>OUR ADDRESS</span>
 
                 <address>
-                  B-34 Keshav Kunj,
-                  <br />
-                  Govindpuram,
+                  Prince Enterprises,
                   <br />
                   Ghaziabad, Uttar Pradesh,
                   <br />
                   India
                 </address>
 
-                <a
-                  className={styles.mapLink}
-                  href="https://www.google.com/maps/search/?api=1&query=B-34+Keshav+Kunj%2C+Govindpuram%2C+Ghaziabad%2C+Uttar+Pradesh%2C+India"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View on Google Maps <span aria-hidden="true">↗</span>
-                </a>
+              
               </div>
             </div>
           </div>
@@ -122,7 +113,7 @@ export default function ContactUsPage() {
 
           <p>
             Thank you for reaching out to{" "}
-            <strong>Tulsi – Puja For Everyone.</strong>
+            <strong>Surya Bulletin.</strong>
           </p>
         </footer>
       </div>
